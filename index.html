@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Soundpad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Online Soundpad</h1>
+        
+        <div class="soundpad-container">
+            <div class="sound-column">
+                <h2>Базовые звуки</h2>
+                <div id="base-sound-buttons"></div>
+            </div>
+            <div class="sound-column">
+                <h2>Дополнительные звуки</h2>
+                <div id="custom-sound-buttons"></div>
+            </div>
+        </div>
+        
+        <div class="upload-container">
+            <label for="sound-upload" class="upload-label">Выберите звуковые файлы</label>
+            <input type="file" id="sound-upload" accept="audio/*" multiple onchange="previewSounds()">
+            <div id="selected-sounds"></div>
+            <button class="upload-button" onclick="uploadSounds()">Загрузить звуки</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Online Soundpad. Все права защищены.</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
