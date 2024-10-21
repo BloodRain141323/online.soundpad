@@ -1,0 +1,238 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#sound-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.sound-button {
+    padding: 15px 30px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease, outline-offset 0s, outline-color 0s, outline-width 0s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: move; /* Указывает, что элемент можно перетаскивать */
+    padding-right: 40px; /* Увеличиваем отступ справа для хоткея */
+}
+
+.sound-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.sound-button::after {
+    content: attr(data-key);
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 12px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.delete-button {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    line-height: 1;
+    cursor: pointer;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.sound-button:hover .delete-button {
+    display: block;
+}
+
+.delete-button:hover {
+    background-color: #c0392b;
+}
+
+.upload-container {
+    text-align: center;
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.upload-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.upload-label:hover {
+    background-color: #2980b9;
+}
+
+#sound-upload {
+    display: none;
+}
+
+.upload-button {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.upload-button:hover {
+    background-color: #27ae60;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #34495e;
+    color: white;
+    margin-top: 40px;
+}
+
+#selected-sounds {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.sound-preview {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.hotkey {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 12px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #3498db;
+    padding: 2px 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+}
+
+.hotkey:hover {
+    background-color: #3498db;
+    color: white;
+    transform: scale(1.1);
+}
+
+.soundpad-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.sound-column {
+    width: 48%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sound-column h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+#base-sound-buttons,
+#custom-sound-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.sound-button.dragging {
+    opacity: 0.6;
+    outline: 2px dashed #e74c3c;
+    outline-offset: 3px;
+}
+
+.sound-button.drag-over {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sound-button.drag-target::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px dashed #3498db;
+    border-radius: 7px;
+    pointer-events: none;
+}
+
+.placeholder {
+    border: 2px dashed #e74c3c;
+    border-radius: 5px;
+    background-color: rgba(231, 76, 60, 0.1);
+}
